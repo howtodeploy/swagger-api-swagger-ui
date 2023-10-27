@@ -1,0 +1,15 @@
+spec:
+  name: swagger-ui
+  services:
+    - name: swagger-ui
+      git:
+        repo_clone_url: https://github.com/howtodeploy/swagger-api-swagger-ui
+        branch: main
+      dockerfile_path: Dockerfile
+      instance_count: 1
+      http_port: 8080
+      health_check:
+        port: 8080
+        http_path: /
+        initial_delay_seconds: 10
+      envs: []
