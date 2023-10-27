@@ -1,0 +1,21 @@
+name: swagger-ui
+providers:
+  - render
+  - digitalocean
+  - docker
+services:
+  - type: docker
+    name: swagger-ui
+    dockerfile: |
+      FROM swaggerapi/swagger-ui:latest
+    docker_run_cmd: docker run --rm -d -p 80:8080 swaggerapi/swagger-ui:latest
+    instance_count: 1
+    http_port: 8080
+    health_check:
+      port: 8080
+      http_path: /
+      initial_delay_seconds: 10
+    disks:
+      - name: swagger-data
+        mount_path: /swagger-data
+        size: 1
