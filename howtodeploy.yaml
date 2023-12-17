@@ -3,6 +3,7 @@ providers:
   - render
   - digitalocean
   - docker
+  - flyio
 services:
   - type: docker
     name: swagger-ui
